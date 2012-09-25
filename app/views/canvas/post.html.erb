@@ -49,6 +49,7 @@ POSSIBILITY OF SUCH DAMAGE.
     				if (data.status === 200) {
         				// Alert with how many Chatter users were returned.
         				for(var u in data.payload.users) {
+        					alert(JSON.stringify(u));
         					alert(u.id + ' ' + u.username);
         				}
         			}
