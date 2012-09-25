@@ -49,7 +49,7 @@ class CanvasController < ApplicationController
     #client = Databasedotcom::Client.new
     #client.authenticate :token => JSON.parse(@canvasRequestJson)[:oauthToken], :instance_url => "http://prerelna1.pre.salesforce.com" 
     #@sfdcId = client.query("select id from Account LIMIT 1")[0][:Id]
-    @sfdcId = JSON.parse(@canvasRequestJson)[:oauthToken]
+    @sfdcId = JSON.parse(@canvasRequestJson)
 
   end
 
