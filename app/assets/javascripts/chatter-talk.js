@@ -14,7 +14,7 @@ if (!chatterTalk) {
         $$.byId(button).onclick=function() {
             var value = $$.byId(input).value;
             var userId = $$.byId(userIdField).value;
-            chatterTalk.post(sr, value, callback, userId);
+            chatterTalk.post(sr, value, userId, callback);
         };
     };
 
