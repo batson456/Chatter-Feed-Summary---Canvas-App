@@ -10,16 +10,16 @@ if (!chatterTalk) {
     function onClickHandler() {
     }
 
-    chatterTalk.init =  function(sr, button, input, callback) {
+    chatterTalk.init =  function(sr, button, input, userId, callback) {
         $$.byId(button).onclick=function() {
             var value = $$.byId(input).value;
-            chatterTalk.post(sr, value, callback);
+            chatterTalk.post(sr, value, callback, userId);
         };
     };
 
 
-    chatterTalk.post =  function(sr, message, callback) {
-        var url = sr.context.links.chatterFeedsUrl+"/news/"+sr.context.user.userId+"/feed-items";
+    chatterTalk.post =  function(sr, message, userId, callback) {
+        var url = sr.context.links.chatterFeedsUrl+"/news/"+userId+"/feed-items";
         var body = {body : {messageSegments : [{type: "Text", text: message}]}};
 
         $$.client.ajax(url,
