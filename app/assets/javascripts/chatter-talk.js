@@ -10,9 +10,10 @@ if (!chatterTalk) {
     function onClickHandler() {
     }
 
-    chatterTalk.init =  function(sr, button, input, userId, callback) {
+    chatterTalk.init =  function(sr, button, input, userIdField, callback) {
         $$.byId(button).onclick=function() {
             var value = $$.byId(input).value;
+            var userId = $$.byId(userIdField).value;
             chatterTalk.post(sr, value, callback, userId);
         };
     };
