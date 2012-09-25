@@ -21,6 +21,9 @@
 # HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
+require "base64"
+require "databasedotcom-oauth2"
+
 class CanvasController < ApplicationController
   # GET /canvas
   def index
@@ -42,6 +45,9 @@ class CanvasController < ApplicationController
 
     # Verify and decode the signed request.
     @canvasRequestJson = srHelper.verifyAndDecode()
+    
+    client = Databasedotcom::Client.new
+    @sfdcId = client.query("select id from Account LIMIT 1")[0][:Id]
 
   end
 
