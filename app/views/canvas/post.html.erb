@@ -53,8 +53,8 @@ POSSIBILITY OF SUCH DAMAGE.
         					userSelection += '<option value="'+data.payload.users[i].id + '">' + data.payload.users[i].username+'</option>';
         				}
         				userSelection += '</select>';
-        				alert(userSelection);
-        				Sfdc.canvas.byId('users').innerHTML = userSelection;
+        				//alert(userSelection);
+        				//Sfdc.canvas.byId('users').innerHTML = userSelection;
         			}
 				}
 			});
@@ -103,7 +103,10 @@ POSSIBILITY OF SUCH DAMAGE.
           <td width="65%"><input id="speech-input-field" type="text" x-webkit-speech/></td>
           <td width="6%"><button id="chatter-submit" type="submit"/></td>
           <td width="10%"><span id="status" style="color:green"></span></td>
-          <td width="10%"><span id="users"></span></td>
+          <td width="10%"><span id="users"><select name="select-user-field">
+          	<option value="005x0000000Kzpy">U1</option>
+          	<option value="005x0000000Kzpp">U2</option>
+          </select></span></td>
         </tr>
       </table>
     </div>
