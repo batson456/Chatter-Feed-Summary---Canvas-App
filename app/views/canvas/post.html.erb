@@ -48,11 +48,8 @@ POSSIBILITY OF SUCH DAMAGE.
     				// Make sure the status code is OK.
     				if (data.status === 200) {
         				// Alert with how many Chatter users were returned.
-        				for(var ou in data.payload.users) {
-        					for(var u in ou) {
-        						alert(JSON.stringify(u));
-        						alert(u.id + ' ' + u.username);
-        					}
+        				for(var i=0;i<data.payload.users.length-1; i++) {
+        					alert(data.payload.users[i].id + ' ' + data.payload.users[i].username);
         				}
         			}
 				}
