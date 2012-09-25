@@ -37,7 +37,11 @@ POSSIBILITY OF SUCH DAMAGE.
         Sfdc.canvas.byId('username').innerHTML = sr.context.user.userName;
         Sfdc.canvas.byId('email').innerHTML = sr.context.user.email;
         Sfdc.canvas.byId('company').innerHTML = sr.context.organization.name;
-
+		
+		var result = sforce.connection.query("Select Name, Id from User");
+  		var records = result.getArray("records");
+  		alert(records);
+		
         chatterTalk.init(sr, "chatter-submit", "speech-input-field", function(data) {
             Sfdc.canvas.byId('status').innerHTML = data.statusText;
         });
