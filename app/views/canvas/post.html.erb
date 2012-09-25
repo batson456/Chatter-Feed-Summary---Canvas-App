@@ -48,11 +48,13 @@ POSSIBILITY OF SUCH DAMAGE.
     				// Make sure the status code is OK.
     				if (data.status === 200) {
         				// Alert with how many Chatter users were returned.
-        				Sfdc.canvas.byId('users').innerHTML += '<select name="select-user-field">';
+        				var userSelection = '<select name="select-user-field">';
         				for(var i=0;i<data.payload.users.length; i++) {
-        					Sfdc.canvas.byId('users').innerHTML += '<option value="'+data.payload.users[i].id + '">' + data.payload.users[i].username+'</option>';
+        					userSelection += '<option value="'+data.payload.users[i].id + '">' + data.payload.users[i].username+'</option>';
         				}
-        				Sfdc.canvas.byId('users').innerHTML += '</select>';
+        				userSelection += '</select>';
+        				alert(userSelection);
+        				Sfdc.canvas.byId('users').innerHTML = userSelection;
         			}
 				}
 			});
