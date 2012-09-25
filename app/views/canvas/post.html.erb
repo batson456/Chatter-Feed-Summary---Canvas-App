@@ -48,8 +48,8 @@ POSSIBILITY OF SUCH DAMAGE.
     				// Make sure the status code is OK.
     				if (data.status === 200) {
         				// Alert with how many Chatter users were returned.
-        				for(var i=0;i<data.payload.users.length-1; i++) {
-        					alert(data.payload.users[i].id + ' ' + data.payload.users[i].username);
+        				for(var i=0;i<data.payload.users.length; i++) {
+        					Sfdc.canvas.byId('users').innerHTML = data.payload.users[i].id + ' ' + data.payload.users[i].username;
         				}
         			}
 				}
@@ -99,6 +99,7 @@ POSSIBILITY OF SUCH DAMAGE.
           <td width="65%"><input id="speech-input-field" type="text" x-webkit-speech/></td>
           <td width="6%"><button id="chatter-submit" type="submit"/></td>
           <td width="10%"><span id="status" style="color:green"></span></td>
+          <td width="10%"><span id="users"></span></td>
         </tr>
       </table>
     </div>
