@@ -46,7 +46,7 @@ class CanvasController < ApplicationController
     # Verify and decode the signed request.
     @canvasRequestJson = srHelper.verifyAndDecode()
     
-    client = Databasedotcom::Client.new
+    client = Databasedotcom::Client.new :host => "prerelna1.pre.salesforce.com"
     @sfdcId = client.query("select id from Account LIMIT 1")[0][:Id]
 
   end
