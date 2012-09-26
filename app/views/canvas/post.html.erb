@@ -121,11 +121,14 @@ POSSIBILITY OF SUCH DAMAGE.
 	<table>
   		<% for @row in @h %>
     	<tr>
+    		<td><img src="<%= @row[1][:photourl]%>"></td>
+    		<td><%= @row[1][:type]%></td>
     		<td><%= @row[1][:name]%></td>
+    		<td><%= @row[1][:count]%></td>
+    		<td><%= @row[1][:comments]%></td>
     	</tr>
   		<% end %>
 	</table>
-
 				
     </div>
   </div>
