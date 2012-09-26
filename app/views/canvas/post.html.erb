@@ -24,101 +24,19 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABI
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 =end %>
-<script>
-    Sfdc.canvas(function() {
-        var sr = JSON.parse('<%= raw @canvasRequestJson %>');
-        // Save the token
-        Sfdc.canvas.oauth.token(sr.oauthToken);
-        var photoUri = sr.context.user.profileThumbnailUrl +  "?oauth_token=" + sr.oauthToken;
-        Sfdc.canvas.byId('fullname').innerHTML = sr.context.user.fullName;
-        Sfdc.canvas.byId('profile').src = (photoUri.indexOf("http")==0 ? "" :sr.instanceUrl) + photoUri;
-        Sfdc.canvas.byId('firstname').innerHTML = sr.context.user.firstName;
-        Sfdc.canvas.byId('lastname').innerHTML = sr.context.user.lastName;
-        Sfdc.canvas.byId('username').innerHTML = sr.context.user.userName;
-        Sfdc.canvas.byId('email').innerHTML = sr.context.user.email;
-        Sfdc.canvas.byId('company').innerHTML = sr.context.organization.name;	
-
-		// Reference the Chatter user's URL from Context.Links object.
-		var chatterUsersUrl = sr.context.links.chatterUsersUrl;
-
-		// Make an XHR call back to salesforce through the supplied browser proxy.
-		Sfdc.canvas.client.ajax(chatterUsersUrl,
-    		{	token : sr.oauthToken,
-    			success : function(data){
-    				// Make sure the status code is OK.
-    				if (data.status === 200) {
-        				// Alert with how many Chatter users were returned.
-        				var userSelection = '<select id="select-user-field">';
-        				for(var i=0;i<data.payload.users.length; i++) {
-        					userSelection += '<option value="'+data.payload.users[i].id + '">' + data.payload.users[i].username+'</option>';
-        				}
-        				userSelection += '</select>';
-        				//alert(userSelection);
-        				Sfdc.canvas.byId('users').innerHTML = userSelection;
-        			}
-				}
-			});
-
-		
-        chatterTalk.init(sr, "chatter-submit", "speech-input-field", "select-user-field", function(data) {
-            Sfdc.canvas.byId('status').innerHTML = data.statusText;
-        });
-
-    });
-
-
-</script>
  <div id="page">
   <div id="content">
     <div id="header">
-      <h1>Hello <span id='fullname'></span>... <%= raw @recentFeedPostCount %></h1>
-      <h2>Welcome to the Force.com Canvas Ruby example!</h2>
-    </div>
-    <!--
-    <table>
-    	<tr>
-    		<td>Recent Feed Post count</td>
-    		<td><%= raw @recentFeedPostCount %></td>    		
-    	</tr>
-    </table>
-    //-->
-    <div id="canvas-content">
-      <h1>Canvas Request</h1>
-      <h2>Below is some information received in the Canvas Request:</h2>
-      <div id="canvas-request">
-        <table border="0" width="100%">
-	        <tr>
-	            <td></td>
-	            <td><b>First Name: </b><span id='firstname'></span></td>
-	            <td><b>Last Name: </b><span id='lastname'></span></td>
-	        </tr>
-	        <tr>
-	            <td><img id='profile' border="0" src="" /></td>
-	            <td><b>Username: </b><span id='username'></span></td>
-	            <td colspan="2"><b>Email Address: </b><span id='email'></span></td>
-	        </tr>
-	        <tr>
-	            <td></td>
-	            <td colspan="3"><b>Company: </b><span id='company'></span></td>
-	        </tr>
-       </table>
-    </div>
-    <div id="canvas-chatter">
-      <table border="0" width="100%">
-        <tr>
-          <td width="15%"><b>Post to Chatter:&nbsp</b></td>
-          <td width="65%"><input id="speech-input-field" type="text" x-webkit-speech/></td>
-          <td width="6%"><button id="chatter-submit" type="submit"/></td>
-          <td width="10%"><span id="status" style="color:green"></span></td>
-          <td width="10%"><span id="users">
-          <!--<select id="select-user-field">
-          	<option value="005x0000000Kzpy">U1</option>
-          	<option value="005x0000000Kzpp">U2</option>
-          </select>--></span></td>
-        </tr>
-      </table>
+      <h1>My Recent Feed Summary</h1>
     </div>
 	<table>
+    	<tr>
+    		<td></td>
+    		<td>Type</td>
+    		<td>Name</td>
+    		<td>Feed Count</td>
+    		<td>Comment Count</td>
+    	</tr>	
   		<% for @row in @h %>
     	<tr>
     		<td><img src="<%= @row[1][:photourl]%>"></td>
