@@ -71,13 +71,13 @@ POSSIBILITY OF SUCH DAMAGE.
  <div id="page">
   <div id="content">
     <div id="header">
-      <h1>Hello <span id='fullname'></span>...</h1>
+      <h1>Hello <span id='fullname'></span>... <%= raw @recentFeedPostCount %></h1>
       <h2>Welcome to the Force.com Canvas Ruby example!</h2>
     </div>
     <table>
     	<tr>
-    		<td>Recent Feed Post Count</td>
-    		<td><%=raw @recentFeedPostCount %></td>    		
+    		<td>Recent Feed Post count</td>
+    		<td><%= raw @recentFeedPostCount %></td>    		
     	</tr>
     </table>
     <div id="canvas-content">
