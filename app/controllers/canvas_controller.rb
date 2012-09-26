@@ -46,23 +46,6 @@ class CanvasController < ApplicationController
     # Verify and decode the signed request.
     @canvasRequestJson = srHelper.verifyAndDecode()
     
-    #client = Databasedotcom::Client.new :version => "25.0"
-	#client.authenticate :token => JSON.parse(@canvasRequestJson)['oauthToken'], :instance_url => "http://prerelna1.pre.salesforce.com"
-    #client.authenticate :username => "", :password => "Barce1ona", :instance_url => "http://prerelna1.pre.salesforce.com"
-    #@sfdcId = client.query("select id from Account LIMIT 1")[0][:Id]
-    #@sfdcId = JSON.parse(@canvasRequestJson)['oauthToken']
-
-	#my_feed_items = Databasedotcom::Chatter::UserProfileFeed.find(client)  #=> a Databasedotcom::Collection of FeedItems
-
-	#my_feed_items.each do |feed_item|
-  	#	feed_item.likes                   #=> a Databasedotcom::Collection of Like instances
-  	#	feed_item.comments                #=> a Databasedotcom::Collection of Comment instances
-  	#	feed_item.raw_hash                #=> the hash returned from the Chatter API describing this FeedItem
-  	#	feed_item.comment("This is cool") #=> create a new comment on the FeedItem
-  	#	feed_item.like                    #=> the authenticating user likes the FeedItem
-	#end
-	#@recentFeedPostCount = my_feed_items.length
-
 	client = Databasedotcom::Client.new :version => "25.0"
 	client.authenticate :token => JSON.parse(@canvasRequestJson)['oauthToken'], :instance_url => "http://prerelna1.pre.salesforce.com"
 
