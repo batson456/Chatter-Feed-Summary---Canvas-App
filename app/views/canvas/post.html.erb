@@ -31,19 +31,19 @@ POSSIBILITY OF SUCH DAMAGE.
     </div>
 	<table>
     	<tr>
-    		<td></td>
-    		<td>Type</td>
-    		<td>Name</td>
-    		<td>Feed Count</td>
-    		<td>Comment Count</td>
+    		<td class="tdborder"></td>
+    		<td class="tdborder"><label>Type</label></td>
+    		<td class="tdborder"><label>Name</label></td>
+    		<td class="tdborder"><label>Feed Count</label></td>
+    		<td class="tdborder"><label>Comment Count</label></td>
     	</tr>	
   		<% for @row in @h %>
     	<tr>
-    		<td><img src="<%= @row[1][:photourl]%>"></td>
-    		<td><%= @row[1][:type]%></td>
-    		<td><%= @row[1][:name]%></td>
-    		<td><%= @row[1][:count]%></td>
-    		<td><%= @row[1][:comments]%></td>
+    		<td class="tdborder"><img src="<%= @row[1][:photourl]%>"></td>
+    		<td class="tdborder"><%= @row[1][:type]%></td>
+    		<td class="tdborder"><%= @row[1][:name]%></td>
+    		<td class="tdborder"><%= @row[1][:count]%></td>
+    		<td class="tdborder"><%= @row[1][:comments]%></td>
     	</tr>
   		<% end %>
 	</table>
