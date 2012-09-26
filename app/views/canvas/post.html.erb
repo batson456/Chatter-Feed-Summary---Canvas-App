@@ -118,7 +118,15 @@ POSSIBILITY OF SUCH DAMAGE.
         </tr>
       </table>
     </div>
+	<table>
+  		<% for @row in @h %>
+    	<tr>
+    		<td><%= @row[1][:name]%></td>
+    	</tr>
+  		<% end %>
+	</table>
 
+				
     </div>
   </div>
 
